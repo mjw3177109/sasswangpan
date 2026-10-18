@@ -1,0 +1,22 @@
+fastapi
+uvicorn[standard]
+sqlalchemy>=2
+alembic
+psycopg[binary]>=3.2
+redis
+pydantic-settings
+python-dotenv
+python-multipart
+bleach
+markdown
+pwdlib[argon2]
+email-validator
+websockets>=14
+prometheus-client
+boto3
+stripe
+
+# development / test
+pytest
+httpx
+ruff
