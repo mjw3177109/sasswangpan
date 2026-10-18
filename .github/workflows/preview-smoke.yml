@@ -1,0 +1,25 @@
+name: V3 preview smoke test
+on:
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: 'Vercel preview URL, e.g. https://example.vercel.app'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  public-preview-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test live preview
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: python3 scripts/smoke_preview.py --url "$PREVIEW_URL"
